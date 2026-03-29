@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitt HCI Course Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-lockup">
+    <div class="lockup-pitt">PITT</div>
+    <div class="lockup-middle">
+      <span class="lockup-ux">UX</span>
+      <span class="lockup-slash">/</span>
+      <span class="lockup-hci">HCI</span>
+    </div>
+    <div class="lockup-course">Course Hub</div>
+  </div>
+
+  <img src="cathy.svg" alt="Pitt HCI Cathedral Logo" class="hero-logo">
+
+  <div class="hero-right">
+    <a class="hnav-link" href="#">HCI @ Pitt</a>
+    <a class="hnav-link" href="#">Disciplines</a>
+    <div class="hero-divider"></div>
+    <div class="t-line">Explore HCI and UX coursework @ Pitt</div>
+    <div class="t-line">Filter by competency and skillset</div>
+    <div class="t-line">Build your course plan across departments</div>
+  </div>
+</div>
+
+<main>
+  <div class="hub-container">
+    <div class="filter-bar">
+      <button class="filter-pill">
+        <select id="catSelect" onchange="render()">
+          <option value="">Scaffolding / Category: Any</option>
+        </select>
+      </button>
+      <button class="filter-pill">
+        <select id="creditsSelect" onchange="render()">
+          <option value="">Credits: Any</option>
+          <option value="3">3 Credits</option>
+        </select>
+      </button>
+      <button class="filter-pill">
+        <select id="prereqSelect" onchange="render()">
+          <option value="">PreReq: Any</option>
+          <option value="no">No Prereq</option>
+          <option value="yes">Has Prereq</option>
+        </select>
+      </button>
+      <button class="filter-pill clear-btn" onclick="clearFilters()">✕ Clear</button>
+    </div>
+    <div class="results-bar" id="resultsBar"></div>
+    <div class="col-header">
+      <div>Course</div>
+      <div>Cr.</div>
+      <div class="col-skill">Category</div>
+      <div class="col-prereq">Prerequisites</div>
+    </div>
+    <div class="course-list" id="courseList"></div>
+  </div>
+</main>
+ <script src="script.js"></script>
+</body>
+</html>
