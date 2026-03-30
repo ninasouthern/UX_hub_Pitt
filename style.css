@@ -38,18 +38,18 @@
     .lockup-course { font-size: clamp(3.2rem, 6.5vw, 5.8rem); font-weight: 900; color: var(--gold); letter-spacing: -0.02em; margin-top: -0.05em; }
 
     .hero-logo {
-      flex-shrink: 0;
+      flex-shrink: 1;
       height: 300px;
-      width: auto;
+      width: 300px;
       opacity: 0.9;
       margin-left: auto;
-      margin-right: 0;
+      margin-right: 0.1rem;
     }
 
     .hero-right {
       flex-shrink: 0;
-      width: 250px;
-      padding-left: 0.75rem;
+      width: 300px;
+      padding-left: 0.44rem;
       border-left: 1px solid rgba(255, 255, 255, 0.15);
       display: flex;
       flex-direction: column;
@@ -127,3 +127,111 @@
       .row-summary { grid-template-columns: 1fr 50px; }
       .skill-cell, .prereq-cell { display: none; }
     }
+
+    /* --- Cart Panel Styles --- */
+.cart-panel { 
+  background: #fff; 
+  padding: 1.5rem; 
+  border-radius: 16px; 
+  box-shadow: var(--shadow-md); 
+  margin-bottom: 2rem; 
+  border-top: 5px solid var(--gold); 
+}
+.cart-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+.cart-header h3 { font-size: 1.25rem; color: var(--blue-dark); font-weight: 800; }
+.cart-count { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+
+/* --- Updated Cart Item Styles --- */
+.cart-item-wrapper { 
+  border-bottom: 1px solid var(--border); 
+}
+.cart-item-wrapper:last-child { 
+  border-bottom: none; 
+}
+
+.cart-item { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  font-size: 0.85rem; 
+  padding: 0.75rem 0; 
+}
+
+.cart-item-title-wrap { 
+  display: flex; 
+  align-items: center; 
+}
+
+.cart-item-title { font-weight: 600; color: var(--text); }
+.cart-item-dept { font-family: monospace; color: var(--muted); margin-right: 0.5rem; }
+
+/* The new expandable cart bio */
+.cart-item-detail { 
+  display: none; 
+  padding: 0 1rem 1rem 2rem; /* Indented to align with the text */
+  font-size: 0.8rem; 
+  color: var(--muted); 
+  line-height: 1.5; 
+}
+.cart-item-detail.open { 
+  display: block; 
+}
+
+.cart-item-remove { 
+  color: #c05c00; 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600; 
+  font-size: 0.75rem;
+}
+.cart-item-remove:hover { text-decoration: underline; }
+
+.cart-skills h4 { 
+  font-size: 0.75rem; 
+  margin: 1.5rem 0 0.5rem; 
+  color: var(--muted); 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+}
+.skill-badge { 
+  display: inline-flex; 
+  align-items: center;
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  padding: 0.3rem 0.7rem; 
+  border-radius: 20px; 
+  font-size: 0.75rem; 
+  margin: 0.2rem 0.2rem 0 0; 
+}
+.skill-badge span { 
+  font-weight: 800; 
+  color: var(--blue); 
+  margin-left: 0.4rem; 
+  background: rgba(0, 53, 148, 0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+}
+
+/* Update your existing Grids to fit the new button */
+.col-header { 
+  grid-template-columns: 1fr 70px 200px 210px 80px; /* Added 80px */
+}
+.row-summary { 
+  grid-template-columns: 1fr 70px 200px 210px 80px; /* Added 80px */
+}
+
+/* The Add to Cart Button on the rows */
+.add-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.add-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.add-btn.in-cart { background: var(--gold); color: var(--blue-dark); border-color: var(--gold-dark); }
