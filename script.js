@@ -306,10 +306,7 @@ if (discPillRow) {
         if (!c) return `<li class="disc-course-row"><div class="disc-course-summary"><span class="disc-course-code">${ref}</span></div></li>`;
         const detailId = `disc-course-${f.id}-${i}`;
         return `<li class="disc-course-row">
-          <div class="disc-course-summary" onclick="
-            var d=document.getElementById('${detailId}');
-            d.classList.toggle('open');
-          ">
+          <div class="disc-course-summary" onclick="document.getElementById('${detailId}').classList.toggle('open')">
             <span class="disc-course-code">${c.dept} ${c.num}</span>
             <span class="disc-course-name">${c.name}</span>
           </div>
