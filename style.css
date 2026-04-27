@@ -165,44 +165,42 @@ main {
   font-family: 'Gothic A1', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  padding: 0.38rem 1rem;
+  padding: 0.42rem 1rem;
   border: none;
   background: var(--gold);
   color: var(--blue);
   cursor: pointer;
   transition: all 0.15s;
   box-shadow: var(--shadow-pill);
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 .disc-pill:hover { background: var(--gold-dark); }
 .disc-pill.active { background: var(--white); color: var(--blue); box-shadow: none; }
 
+.disc-pill-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(96%) saturate(2800%) hue-rotate(213deg) brightness(85%) contrast(110%);
+}
+
 .disc-detail {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  padding: 2rem 1.4rem 2.5rem;
   background: var(--white);
   border-top: 3px solid var(--gold);
-  min-height: 280px;
-  overflow: hidden;
 }
 
-.disc-detail-body {
-  flex: 1;
-  padding: 2rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.disc-detail-body h2 {
+.disc-detail h2 {
   font-size: 1.4rem;
   font-weight: 900;
   color: var(--blue);
   margin-bottom: 0.5rem;
 }
 
-.disc-detail-body > p {
+.disc-detail > p {
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--muted);
@@ -220,6 +218,11 @@ main {
   line-height: 1.8;
 }
 
+.disc-careers {
+  margin-bottom: 1.5rem;
+}
+
+.disc-careers h4,
 .disc-courses h4 {
   font-size: 0.68rem;
   font-weight: 800;
@@ -227,6 +230,16 @@ main {
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 8px;
+}
+
+.career-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue);
+  background: #eef3fc;
+  padding: 0.25rem 0.75rem;
+  margin: 0.2rem 0.2rem 0 0;
 }
 
 .disc-courses ul { list-style: none; }
@@ -256,25 +269,6 @@ main {
   margin-bottom: 8px;
 }
 .disc-course-detail.open { display: block; }
-
-.disc-detail-icon {
-  flex-shrink: 0;
-  width: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  padding: 0;
-  overflow: hidden;
-}
-
-.disc-detail-icon img {
-  width: 600%;
-  height: 300%;
-  max-height: 400px;
-  object-fit: cover;
-  filter: brightness(0) saturate(100%) invert(12%) sepia(83%) saturate(3939%) hue-rotate(216deg) brightness(88%) contrast(101%);
-}
 
 .hub-container {
   background: var(--blue);
@@ -510,8 +504,6 @@ main {
   .header-inner { height: 60px; padding: 0 1rem; }
   .header-name { display: none; }
   .header-logo { height: 42px; width: 42px; }
-  .disc-detail { flex-direction: column; }
-  .disc-detail-icon { width: 100%; height: 180px; padding: 1rem; }
   .col-header { grid-template-columns: 1fr 50px; }
   .col-header .col-skill, .col-header .col-prereq { display: none; }
   .row-summary { grid-template-columns: 1fr 50px; }

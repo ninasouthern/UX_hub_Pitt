@@ -173,56 +173,71 @@ function render() {
 
 const FIELDS = [
   { id:'accessible_design', label:'Accessible & Diverse Design',
-    icon:'equal.svg',
+    icon:'Disc_Icon7.svg',
     desc:'Designing for diverse users including those with disabilities, following WCAG standards and inclusive design principles.',
     skills:['WCAG','Social Impact','Cognitive Load','Inclusive Design','Diversity and Inclusivity'],
-    courses:['GSWS 1210','INFSCI 0010','ENGCMP 0545'] },
+    courses:['GSWS 1210','INFSCI 0010'],
+    careers:['Accessibility Consultant','UX Designer','Product Designer','Digital Equity Specialist'] },
+
   { id:'user_research', label:'User & Media Research',
-    icon:'stathead.svg',
+    icon:'Disc_Icon3.svg',
     desc:'Methods for understanding user needs, behaviors, and contexts through qualitative and quantitative research techniques.',
     skills:['User Interviewing','Ethnography','Persona Development','Empathy Mapping'],
-    courses:['ENGCMP 1430','INFSCI 1440','COMMRC 0320'] },
+    courses:['ENGCMP 1430','INFSCI 1440'],
+    careers:['UX Researcher','Market Research Analyst','User Interviewer','Human Factors Analyst'] },
+
   { id:'user_testing', label:'User Testing',
-    icon:'research_head.svg',
+    icon:'Disc_Icon6.svg',
     desc:'Evaluating products and services with real users to identify usability issues and gather feedback for improvement.',
     skills:['Usability and Product Testing','Heuristic Evaluation','User Feedback Analysis','A/B Testing'],
-    courses:['ENGCMP 1430','INFSCI 1420'] },
+    courses:['ENGCMP 1430','INFSCI 1420'],
+    careers:['UX Researcher','QA Analyst','Product Tester','Product Manager'] },
+
   { id:'development', label:'Development',
-    icon:'dev1.svg',
+    icon:'Disc_Icon5.svg',
     desc:'Building and coding digital products, from front-end interfaces to back-end systems, using languages and computational frameworks.',
     skills:['Programming Fundamentals','HTML/CSS','Python','Database Design'],
-    courses:['CS 0134','INFSCI 1059','INFSCI 1500'] },
+    courses:['CS 0134','INFSCI 1059'],
+    careers:['Front-End Developer','UX Engineer','Technical Lead','Product Engineer'] },
+
   { id:'human_factors', label:'Human Factors & Psychology',
-    icon:'rebrain.svg',
+    icon:'Disc_Icon4.svg',
     desc:'Understanding how humans interact with technology, including cognitive processes, user behavior, and interface design.',
     skills:['Cognitive Psychology','Mental Models','Distributed Cognition','Affordances'],
-    courses:['PSY 0105','PSY 0421','COMMRC 1111'] },
+    courses:['PSY 0105','PSY 0421'],
+    careers:['Human Factors Analyst','UX Researcher','Behavioral Designer'] },
+
   { id:'product_strategy', label:'Product Strategy',
-    icon:'strat.svg',
+    icon:'Disc_Icon8.svg',
     desc:'Developing and executing strategies for product development, positioning, and project management.',
     skills:['Strategic Planning','Market Research','Product Lifecycle Management','Project Management'],
-    courses:['ENGCMP 1104','INFSCI 1460','COMMRC 1102'] },
+    courses:['ENGCMP 1104','INFSCI 1460'],
+    careers:['Product Manager','Product Lead','Solutions Engineer','Technical Consultant'] },
+
   { id:'design_storytelling', label:'Design & Storytelling',
-    icon:'story.svg',
+    icon:'Disc_Icon1.svg',
     desc:'Applying narrative thinking to design, user journeys, and digital communication.',
     skills:['Narrative Design','Storytelling','Voice & Tone','Storyboarding'],
-    courses:['ENGCMP 1201','ENGFLM 0591','ENGCMP 1130'] },
+    courses:['ENGCMP 1201','ENGFLM 0591'],
+    careers:['UX Writer','Creative Lead','Copy Writer','Brand Strategist'] },
+
   { id:'immersive_tech', label:'Immersive Technology',
-    icon:'immersive.svg',
+    icon:'Disc_Icon2.svg',
     desc:'Exploring the intersection of human-computer interaction and VR/AR experiences.',
     skills:['Virtual Reality','Augmented Reality','User Experience Design','Interaction Design'],
-    courses:['INFSCI 1470','ENGLIT 1355','INFSCI 1635'] },
+    courses:['INFSCI 1470','ENGLIT 1355'],
+    careers:['VR/AR Developer/Researcher','Game Designer','Immersive Experience Designer','UX Engineer'] },
 ];
 
 function buildDisciplines() {
-  const discPillRow     = document.getElementById('discPillRow');
+  const discPillRow = document.getElementById('discPillRow');
   if (!discPillRow) return;
 
   const discDetail        = document.getElementById('discDetail');
-  const discDetailIcon    = document.getElementById('discDetailIcon');
   const discDetailTitle   = document.getElementById('discDetailTitle');
   const discDetailDesc    = document.getElementById('discDetailDesc');
   const discDetailSkills  = document.getElementById('discDetailSkills');
+  const discDetailCareers = document.getElementById('discDetailCareers');
   const discDetailCourses = document.getElementById('discDetailCourses');
   let activeDiscId = null;
 
@@ -230,7 +245,7 @@ function buildDisciplines() {
     const pill = document.createElement('button');
     pill.className  = 'disc-pill';
     pill.dataset.id = f.id;
-    pill.innerHTML  = `<span>${f.label}</span>`;
+    pill.innerHTML  = `<img class="disc-pill-icon" src="${f.icon}" alt=""><span>${f.label}</span>`;
 
     pill.addEventListener('click', () => {
       if (activeDiscId === f.id) {
@@ -243,10 +258,13 @@ function buildDisciplines() {
       pill.classList.add('active');
       activeDiscId = f.id;
 
-      discDetailIcon.innerHTML  = `<img src="${f.icon}" alt="${f.label}">`;
-      discDetailTitle.textContent = f.label;
-      discDetailDesc.textContent  = f.desc;
+      discDetailTitle.textContent  = f.label;
+      discDetailDesc.textContent   = f.desc;
       discDetailSkills.textContent = f.skills.join(', ');
+
+      discDetailCareers.innerHTML = (f.careers || [])
+        .map(c => `<span class="career-tag">${c}</span>`)
+        .join('');
 
       discDetailCourses.innerHTML = f.courses.map((ref, i) => {
         const [dept, num] = ref.trim().split(' ');
@@ -265,7 +283,7 @@ function buildDisciplines() {
         </li>`;
       }).join('');
 
-      discDetail.style.display = 'flex';
+      discDetail.style.display = 'block';
       setTimeout(() => discDetail.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
     });
 
